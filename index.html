@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080b10"><meta name="description" content="A cinematic, true-scale journey from a small asteroid through remarkable moons, planets, giant stars and enormous black holes.">
+  <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Cosmic Scale · A journey through size</title>
+  <link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icons/icon-192.png"><link rel="apple-touch-icon" href="./icons/icon-192.png"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Cosmic Scale home"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="9"/><ellipse cx="20" cy="20" rx="19" ry="7" transform="rotate(-35 20 20)"/><circle cx="33" cy="10" r="2" class="brand-dot"/></svg><span>COSMIC<span class="brand-light">SCALE</span></span></a>
+    <span class="header-note">A LITTLE PERSPECTIVE CHANGES EVERYTHING.</span>
+    <nav aria-label="App tools"><button class="text-button" id="browse" aria-label="Objects"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6"/><rect x="15" y="3" width="6" height="6"/><rect x="3" y="15" width="6" height="6"/><rect x="15" y="15" width="6" height="6"/></svg><span>Objects</span></button><button class="icon-button" id="about" aria-label="About, controls and sources"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></svg></button><button class="install-button" id="install"><svg viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"/></svg><span>Install app</span></button></nav>
+  </header>
+
+  <main class="viewport" id="viewport" aria-label="Space object size comparison">
+    <canvas id="universe" aria-label="Illustrated objects drawn at a shared diameter scale"></canvas>
+    <div class="scene-top"><span class="mono"><span class="live-dot"></span> SCALE EXPLORER</span><span class="mono" id="location">OUR SOLAR SYSTEM</span></div>
+    <section class="object-info" aria-live="polite" aria-atomic="true">
+      <div class="object-index mono"><span id="object-number">01</span><span class="dim"> / <span id="object-total">34</span></span><span class="small-rule"></span><span id="object-type">ASTEROID</span></div>
+      <h1 id="object-name">Bennu</h1>
+      <p class="object-parent mono" id="object-parent">NEAR-EARTH ASTEROID</p>
+      <p class="object-fact" id="object-fact">Small enough to fit beside a skyscraper. Our journey begins with a tiny piece of the solar system.</p>
+      <button class="source-link" id="object-source">Object notes <span>↗</span></button>
+    </section>
+    <div class="comparison-tag mono" id="comparison"><span class="comparison-mark">↗</span><div><strong id="comparison-ratio">A SMALL BEGINNING</strong><span id="comparison-name">Keep going. It gets bigger.</span></div></div>
+    <div class="scale-note mono"><span class="crosshair">＋</span><span>SHARED SIZE SCALE<br><span class="dim">Spacing is illustrative</span></span></div>
+    <div class="telemetry" aria-label="Object measurements">
+      <div class="datum"><span class="datum-label mono" id="diameter-label">DIAMETER</span><div class="datum-value" id="diameter">500 <span>m</span></div></div>
+      <div class="datum"><span class="datum-label mono" id="mass-label">MASS</span><div class="datum-value" id="mass">7.33 × 10<sup>10</sup> <span>kg</span></div></div>
+      <div class="datum"><span class="datum-label mono">LIGHT CROSSING TIME</span><div class="datum-value" id="light-time">1.67 <span>ms</span></div></div>
+      <button class="icon-button expand-button" id="fullscreen" aria-label="Toggle fullscreen"><svg viewBox="0 0 24 24"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/></svg></button>
+    </div>
+  </main>
+
+  <footer class="controls">
+    <div class="journey-row"><span class="mono journey-caption">THE JOURNEY <span id="journey-progress">01 / 34</span></span><div class="chapter-tabs" aria-label="Jump to a chapter"><button data-chapter="small" class="active">Small worlds</button><button data-chapter="giants">Gas & ice giants</button><button data-chapter="stars">Stars</button><button data-chapter="holes">Black holes</button></div><span class="mono range-caption">SMALL <span>→</span> IMMENSE</span></div>
+    <div class="scrubber-wrap"><div class="chapter-ticks" id="chapter-ticks" aria-hidden="true"></div><input type="range" id="scrubber" min="0" max="33" step="1" value="0" aria-label="Explore objects from smallest to largest"></div>
+    <div class="playback"><div class="playback-main"><button class="icon-button" id="previous" aria-label="Previous smaller object"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button><button class="play-button" id="play"><svg id="play-icon" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></svg><span id="play-label">Play journey</span></button><button class="icon-button" id="next" aria-label="Next larger object"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button><button class="speed-button mono" id="speed" aria-label="Playback speed, currently 1 times">1×</button></div><span class="keyboard-hint mono">← → EXPLORE <span>·</span> SPACE TO PLAY</span><span class="offline-status mono" id="offline-status">BUILT FOR EXPLORING</span></div>
+  </footer>
+</div>
+
+<dialog id="catalogue" class="catalogue"><div class="dialog-head"><div><span class="eyebrow mono">THE COSMIC COLLECTION</span><h2>Pick your perspective.</h2></div><button class="icon-button close-dialog" aria-label="Close object collection">✕</button></div><div class="catalogue-tools"><input type="search" id="search" placeholder="Find a moon, planet, star…" aria-label="Search objects"><div class="filter-tabs" id="filters"><button class="active" data-filter="All">All</button><button data-filter="Moon">Moons</button><button data-filter="Planet">Planets</button><button data-filter="Star">Stars</button><button data-filter="Black hole">Black holes</button></div></div><div class="object-list" id="object-list"></div><p class="empty-state" id="empty" hidden>No objects found. Try another name.</p></dialog>
+
+<dialog id="notes" class="notes"><div class="dialog-head"><div><span class="eyebrow mono">A LITTLE CONTEXT</span><h2 id="notes-title">A universe of perspective.</h2></div><button class="icon-button close-dialog" aria-label="Close information">✕</button></div><div id="notes-content"></div></dialog>
+<div class="toast" id="toast" role="status"></div>
+<noscript><p class="noscript">Enable JavaScript to explore Cosmic Scale.</p></noscript>
+<script src="./data.js"></script><script src="./app.js"></script>
+</body></html>
